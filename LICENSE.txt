@@ -1,0 +1,35 @@
+Educational Use License Agreement
+==================================================
+
+This License Agreement (the "Agreement") is a binding legal agreement between you (as an individual or entity, as applicable) and the author or maintainer (“Author”). By downloading, copying, or using the exercise files in this repository (“Licensed Materials”), you agree to be bound by the terms of this Agreement. If you do not agree to these terms, do not download, copy, or use the Licensed Materials.
+
+1. License.
+- a. Subject to the terms of this Agreement, the Author grants you a non-exclusive, non-transferable copyright license to:
+  1. Make copies of the Licensed Materials.
+  2. Modify or adapt the Licensed Materials.
+  3. Use the Licensed Materials for personal, educational, or instructional purposes (e.g. teaching, coursework, tutorials, classroom activities).
+- b. Distribution. You may share or distribute the Licensed Materials **only for non-commercial educational use**. The Licensed Materials must not be sold, repackaged, or used as part of any paid service or product.
+
+2. Restrictions and Intellectual Property.
+- a. You may not use the Licensed Materials for commercial purposes.
+- b. You may not falsely claim authorship or remove attribution from the Licensed Materials.
+- c. The Author retains all intellectual property rights in the Licensed Materials.
+
+3. Open Source.
+Some files may contain or depend on open source software. These components are subject to their own license terms.
+
+4. Disclaimer.
+THE LICENSED MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTIES OF ANY KIND. THE AUTHOR DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+5. Limitation of Liability.
+IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE LICENSED MATERIALS.
+
+6. Termination.
+This Agreement terminates automatically if you breach any of its terms. Upon termination, you must delete all copies of the Licensed Materials.
+
+7. Governing Law.
+This Agreement shall be governed by the laws of the author's country or jurisdiction, unless otherwise required by applicable law.
+
+---
+
+Last Updated: March 2025
