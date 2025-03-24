@@ -1,56 +1,71 @@
 <?php
-// Connect to the database
-$mysqli = new mysqli("db", "root", "password", "bookshop");
 
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
+// 1. Create a database connection
+$db = mysqli_connect("127.0.0.1", "mariadb", "mariadb", "mariadb", 3306);
+
+// Test if connection succeeded (recommended)
+if(mysqli_connect_errno()) {
+  $msg = "Database connection failed: ";
+  $msg .= mysqli_connect_error();
+  $msg .= " (" . mysqli_connect_errno() . ")";
+  exit($msg);
 }
 
-// Fetch tasks
-$result = $mysqli->query("SELECT * FROM tasks");
+// 2. Perform database query
+$sql = "SELECT * FROM tasks LIMIT 1";
+$result = mysqli_query($db, $sql);
+
+// Test if query succeeded (recommended)
+if (!$result) {
+	exit("Database query failed.");
+}
+
+// 3. Use returned data (if any)
+$task = mysqli_fetch_assoc($result);
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Task List</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 60%;
-            margin: 2rem auto;
-        }
-        th, td {
-            padding: 8px 12px;
-            border: 1px solid #aaa;
-            text-align: left;
-        }
-        th {
-            background-color: #eee;
-        }
-        h2 {
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <h2>Task List</h2>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Priority</th>
-            <th>Completed</th>
-            <th>Description</th>
-        </tr>
-        <?php while($row = $result->fetch_assoc()): ?>
-        <tr>
-            <td><?= $row['id'] ?></td>
-            <td><?= $row['priority'] ?></td>
-            <td><?= $row['completed'] ? 'Yes' : 'No' ?></td>
-            <td><?= htmlspecialchars($row['description']) ?></td>
-        </tr>
-        <?php endwhile; ?>
-    </table>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Task Manager: Show Task</title>
+  </head>
+  <body>
+
+    <header>
+      <h1>Task Manager</h1>
+    </header>
+
+    <section>
+
+      <h1>Show Task</h1>
+
+      <dl>
+        <dt>ID</dt>
+        <dd><?php echo $task['id']; ?></dd>
+      </dl>
+      <dl>
+        <dt>Priority</dt>
+        <dd><?php echo $task['priority']; ?></dd>
+      </dl>
+      <dl>
+        <dt>Completed</dt>
+        <dd><?php echo $task['completed'] == 1 ? 'true' : 'false'; ?></dd>
+      </dl>
+      <dl>
+        <dt>Description</dt>
+        <dd><?php echo $task['description']; ?></dd>
+      </dl>
+
+    </section>
+
+  </body>
 </html>
+
+<?php
+// 4. Release returned data
+mysqli_free_result($result);
+
+// 5. Close database connection
+mysqli_close($db);
+?>
