@@ -1,7 +1,8 @@
 <?php
 
 // Helper function
-function redirect_to($location) {
+function redirect_to($location)
+{
   header("Location: " . $location);
   exit;
 }
@@ -9,13 +10,13 @@ function redirect_to($location) {
 // typecast the value as an integer to prevent SQL injection
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   // 1. Create a database connection
   $db = mysqli_connect("127.0.0.1", "mariadb", "mariadb", "mariadb", 3306);
 
   // Test if connection succeeded (recommended)
-  if(mysqli_connect_errno()) {
+  if (mysqli_connect_errno()) {
     $msg = "Database connection failed: ";
     $msg .= mysqli_connect_error();
     $msg .= " (" . mysqli_connect_errno() . ")";
@@ -30,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   // Test if query succeeded (recommended)
   // For DELETE statements, $result is true/false
-  if(!$result) {
+  if (!$result) {
     echo 'Delete failed';
     exit;
   }
@@ -42,9 +43,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   // 5. Close database connection
   mysqli_close($db);
-
 }
 
 redirect_to('index.php');
-
-?>
