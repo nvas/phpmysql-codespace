@@ -2,7 +2,7 @@
 
 This repository provides a ready-to-use **PHP + MariaDB development environment** using GitHub Codespaces.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Fork and Launch
 
@@ -39,7 +39,7 @@ mariadb
 
 ---
 
-## 📂 File Structure
+## File Structure
 
 ```
 .devcontainer/
@@ -63,7 +63,7 @@ mysqldump -h 127.0.0.1 -u mariadb -p your_new_database_name < import.sql
 mysqldump -h 127.0.0.1 -u mariadb -p mariadb > export.sql
 ```
 
-## 📄 License
+##  License
 
 This project is licensed under the **Educational Use License**.  
 See [EDUCATIONAL_LICENSE.txt](./EDUCATIONAL_LICENSE.txt) for details.
