@@ -52,6 +52,17 @@ mariadb
 
 ---
 
+## Import/Export database
+
+### Import 
+```bash
+mysqldump -h 127.0.0.1 -u mariadb -p your_new_database_name < import.sql
+```
+### Export
+```bash
+mysqldump -h 127.0.0.1 -u mariadb -p mariadb > export.sql
+```
+
 ## 📄 License
 
 This project is licensed under the **Educational Use License**.  

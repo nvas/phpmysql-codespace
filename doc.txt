@@ -1,0 +1,4 @@
+# import database
+    mysqldump -h 127.0.0.1 -u mariadb -p your_new_database_name < import.sql
+# export database
+    mysqldump -h 127.0.0.1 -u mariadb -p mariadb > export.sql

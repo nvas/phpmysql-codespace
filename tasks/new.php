@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>Task Manager: New Task</title>
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
   <header>
@@ -51,6 +52,9 @@
       </form>
 
     </section>
-
   </body>
+
+  <footer>
+      &copy; 2025 Tasks Manager System
+    </footer>
 </html>

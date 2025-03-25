@@ -75,6 +75,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
   <head>
     <title>Task Manager: Edit Task</title>
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
 
@@ -132,6 +133,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     </section>
 
   </body>
+
+
+    <footer>
+      &copy; 2025 Tasks Manager System
+    </footer>
 </html>
 
 <?php

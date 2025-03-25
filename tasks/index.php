@@ -38,6 +38,7 @@ if (!$result) {
 <html lang="en">
   <head>
     <title>Task Manager: Task List</title>
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
 
@@ -89,6 +90,11 @@ if (!$result) {
     </section>
 
   </body>
+
+
+    <footer>
+      &copy; 2025 Tasks Manager System
+    </footer>
 </html>
 
 <?php

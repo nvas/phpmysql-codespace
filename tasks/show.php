@@ -37,6 +37,7 @@ if (is_null($task)) {
 <html lang="en">
   <head>
     <title>Task Manager: Show Task</title>
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
 
@@ -83,6 +84,10 @@ if (is_null($task)) {
     </form>
 
   </body>
+
+  <footer>
+      &copy; 2025 Tasks Manager System
+    </footer>
 </html>
 
 <?php
