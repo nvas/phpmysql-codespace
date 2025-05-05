@@ -7,7 +7,7 @@ function redirect_to($location) {
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+  var_dump($_POST['description']);
   $task = [];
   $task['description'] = $_POST['description'] ?? '';
   $task['priority'] = $_POST['priority'] ?? '10';

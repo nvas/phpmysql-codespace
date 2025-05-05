@@ -62,6 +62,14 @@ mysqldump -h 127.0.0.1 -u mariadb -p your_new_database_name < import.sql
 ```bash
 mysqldump -h 127.0.0.1 -u mariadb -p mariadb > export.sql
 ```
+| Field            | Meaning                                                                 |
+|------------------|-------------------------------------------------------------------------|
+| mysqldump        | The command-line utility to export (dump) a MySQL/MariaDB database.     |
+| -h 127.0.0.1     | Hostname or IP address of the database server (here, 127.0.0.1 = localhost). |
+| -u mariadb       | Username used to connect to the database (mariadb is the username).     |
+| -p               | Prompts for the user's password (it won’t show as you type).            |
+| mariadb          | Name of the database to be exported.                                    |
+| > export.sql     | Redirects the output to a file named export.sql.                        |
 
 ##  License
 

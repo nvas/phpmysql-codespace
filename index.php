@@ -13,7 +13,7 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="tasks/">Table Tasks</a></li>
-          <li><a href="#">Table 2</a></li>
+          <li><a href="books/">Table Books</a></li>
           <li><a href="#">Table 3</a></li>
         </ul>
       </nav>
