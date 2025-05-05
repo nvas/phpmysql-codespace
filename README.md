@@ -24,7 +24,7 @@ apachectl start
 - Click the 🌐 icon next to port 80 to open the site
 
 ### 3. Access MySQL
-
+*User mariadb has access and full privileges to all databases.*
 In the terminal:
 
 ```bash
@@ -35,6 +35,17 @@ Use password:
 
 ```
 mariadb
+```
+
+*User book_store has access and full privileges to the Books database only*
+```bash
+mysql -h 127.0.0.1 -u books_admin -p
+```
+
+Use password:
+
+```
+books_admin
 ```
 
 ---

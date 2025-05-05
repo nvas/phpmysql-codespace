@@ -8,9 +8,10 @@
 // $dbname = "mariadb";
 
 $host = "127.0.0.1";
-$username = "admin";
-$password = "admin";
-$dbname = "mariadb";
+// $host = "localhost";
+$username = "books_admin";
+$password = "books_admin";
+$dbname = "Books";
 $db = mysqli_connect($host, $username, $password, $dbname, 3306);
 
 
@@ -39,14 +40,14 @@ if (!$result) {
 <html lang="en">
 
 <head>
-  <title>Task Manager: Task List</title>
+  <title>Book Store: Book List</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
 
   <header>
-    <h1>Tasks Manager DBMS</h1>
+    <h1>Book Store</h1>
     <nav>
       <ul>
         <li><a href="/">Home</a></li>
