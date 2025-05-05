@@ -1,52 +1,89 @@
-
 <!doctype html>
 <html lang="en">
-  <head>
-      <title>Tasks Manager DBMS</title>
-      <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
 
-    <header>
-      <h1>Tasks Manager DBMS</h1>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="tasks/">Table Tasks</a></li>
-          <li><a href="books/">Table Books</a></li>
-          <li><a href="#">Table 3</a></li>
-        </ul>
-      </nav>
-    </header>
+<head>
+  <title>Book Store DBMS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-    <main>
-      <h2>Tables Overview</h2>
+<body>
 
-      <section>
-        <h3>Table 1: Tasks</h3>
-        <p>
-          This table defines tasks with a unique <code>id</code> as the primary key that auto-increments. Each task includes a <code>priority</code> level, a <code>completed</code> status (0 or 1), and a <code>description</code> of up to 255 characters.
-        </p>
-      </section>
+  <header>
+    <h1>Book Store DBMS</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <!-- <li><a href="tasks/">Table Tasks</a></li> -->
+        <li><a href="books/">Books</a></li>
+        <li><a href="#">Authors</a></li>
+        <li><a href="#">Customers</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">Shipments</a></li>
+      </ul>
+    </nav>
+  </header>
 
-      <section>
-        <h3>Table 2: Table 2</h3>
-        <p>
-          ...
-        </p>
-      </section>
+  <main>
+    <h2>Tables Overview</h2>
 
-      <section>
-        <h3>Table 3: Table 3</h3>
-        <p>
-          ...
-        </p>
-      </section>
-    </main>
+    <section>
+      <h3>Table: Books</h3>
+      <p>
+        <strong>Columns:</strong><br />
+        - <code>id</code>: int(11), NOT NULL, PRIMARY KEY, auto_increment<br />
+        - <code>ISBN</code>: varchar(13), NOT NULL, UNIQUE<br />
+        - <code>Title</code>: varchar(100), NULL<br />
+        - <code>Price</code>: decimal(6,2), NULL
+      </p>
+    </section>
 
-    <footer>
-      &copy; 2025 Tasks Manager System
-    </footer>
-    
-  </body>
+    <section>
+      <h3>Table: Authors</h3>
+      <p>
+        <strong>Columns:</strong><br />
+        - <code>AuthorID</code>: int(11), NOT NULL, PRIMARY KEY<br />
+        - <code>Name</code>: varchar(100), NULL
+      </p>
+    </section>
+
+    <section>
+      <h3>Table: Orders</h3>
+      <p>
+        <strong>Columns:</strong><br />
+        - <code>OrderID</code>: int(11), NOT NULL, PRIMARY KEY<br />
+        - <code>CustomerID</code>: int(11), NULL, FOREIGN KEY<br />
+        - <code>BookISBN</code>: varchar(13), NULL, FOREIGN KEY<br />
+        - <code>Quantity</code>: int(11), NULL
+      </p>
+    </section>
+
+    <section>
+      <h3>Table: Customers</h3>
+      <p>
+        <strong>Columns:</strong><br />
+        - <code>CustomerID</code>: int(11), NOT NULL, PRIMARY KEY<br />
+        - <code>Name</code>: varchar(100), NULL<br />
+        - <code>Email</code>: varchar(100), NULL
+      </p>
+    </section>
+
+    <section>
+      <h3>Table: Shipments</h3>
+      <p>
+        <strong>Columns:</strong><br />
+        - <code>ShipmentID</code>: int(11), NOT NULL, PRIMARY KEY<br />
+        - <code>OrderID</code>: int(11), NULL, FOREIGN KEY<br />
+        - <code>Address</code>: varchar(200), NULL<br />
+        - <code>Status</code>: varchar(20), NULL
+      </p>
+    </section>
+  </main>
+
+
+  <footer>
+    &copy; 2025 Tasks Manager System
+  </footer>
+
+</body>
+
 </html>

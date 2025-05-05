@@ -47,7 +47,7 @@ if (!$result) {
 <body>
 
   <header>
-    <h1>Book Store</h1>
+    <h1>Book Store DBMS</h1>
     <nav>
       <ul>
         <li><a href="/">Home</a></li>
@@ -55,36 +55,35 @@ if (!$result) {
     </nav>
   </header>
 
-  <nav>
-    <a href="new.php">+ New Book</a>
-  </nav>
 
-  <section>
 
-    <h1>Book List</h1>
+  <main>
+    <section>
+      <a href="new.php">+ Add New Book</a>
+      <h1>Book List</h1>
 
-    <table>
-      <tr>
-        <th>ISBN</th>
-        <th>Title</th>
-        <th>Price</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-      </tr>
-
-      <?php while ($book = mysqli_fetch_assoc($result)) { ?>
+      <table>
         <tr>
-          <td><?php echo $book['ISBN']; ?></td>
-          <td><?php echo $book['Title']; ?></td>
-          <td><?php echo $book['Price']; ?></td>
-          <td><a href="show.php?id=<?php echo $task['id']; ?>">View</a></td>
-          <td><a href="edit.php?id=<?php echo $task['id']; ?>">Edit</a></td>
+          <th>ISBN</th>
+          <th>Title</th>
+          <th>Price</th>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
         </tr>
-      <?php } ?>
-    </table>
 
-  </section>
+        <?php while ($book = mysqli_fetch_assoc($result)) { ?>
+          <tr>
+            <td><?php echo $book['ISBN']; ?></td>
+            <td><?php echo $book['Title']; ?></td>
+            <td><?php echo $book['Price']; ?></td>
+            <td><a href="show.php?id=<?php echo $book['id']; ?>">View</a></td>
+            <td><a href="edit.php?id=<?php echo $book['id']; ?>">Edit</a></td>
+          </tr>
+        <?php } ?>
+      </table>
 
+    </section>
+  </main>
 </body>
 
 
