@@ -1,0 +1,72 @@
+<?php
+include 'config.php';
+
+$type = $_GET['type'];
+
+switch($type) {
+    case 'موظفين':
+        $stmt = $pdo->query("SELECT name, role, hire_date, salary, loans, incentives FROM employees");
+        $data = $stmt->fetchAll();
+        echo "<table class='table'><thead><tr><th>الاسم</th><th>الصلاحية</th><th>تاريخ التعيين</th><th>الراتب</th><th>السلفيات</th><th>الحوافز</th></tr></thead><tbody>";
+        foreach($data as $row) {
+            echo "<tr>
+                <td>{$row['name']}</td>
+                <td>{$row['role']}</td>
+                <td>{$row['hire_date']}</td>
+                <td>{$row['salary']}</td>
+                <td>{$row['loans']}</td>
+                <td>{$row['incentives']}</td>
+            </tr>";
+        }
+        echo "</tbody></table>";
+        break;
+    case 'رواتب':
+        $stmt = $pdo->query("SELECT name, salary, loans, incentives, (salary - loans + incentives) as net_salary FROM employees");
+        $data = $stmt->fetchAll();
+        echo "<table class='table'><thead><tr><th>الاسم</th><th>الراتب الأساسي</th><th>السلفيات</th><th>الحوافز</th><th>صافي الراتب</th></tr></thead><tbody>";
+        foreach($data as $row) {
+            echo "<tr>
+                <td>{$row['name']}</td>
+                <td>{$row['salary']}</td>
+                <td>{$row['loans']}</td>
+                <td>{$row['incentives']}</td>
+                <td>{$row['net_salary']}</td>
+            </tr>";
+        }
+        echo "</tbody></table>";
+        break;
+    case 'عملاء':
+        $stmt = $pdo->query("SELECT c.customer_name, c.sacks_count, c.delivery_date, e.name as supervisor 
+                            FROM customers c 
+                            LEFT JOIN employees e ON c.supervisor_id = e.id");
+        $data = $stmt->fetchAll();
+        echo "<table class='table'><thead><tr><th>اسم العميل</th><th>عدد الشوالات</th><th>تاريخ التسليم</th><th>المشرف</th></tr></thead><tbody>";
+        foreach($data as $row) {
+            echo "<tr>
+                <td>{$row['customer_name']}</td>
+                <td>{$row['sacks_count']}</td>
+                <td>{$row['delivery_date']}</td>
+                <td>{$row['supervisor']}</td>
+            </tr>";
+        }
+        echo "</tbody></table>";
+        break;
+    case 'عمليات':
+        $stmt = $pdo->query("SELECT o.id, e.name as supervisor, o.total_sacks, o.start_time, o.end_time 
+                            FROM operations o 
+                            JOIN employees e ON o.supervisor_id = e.id");
+        $data = $stmt->fetchAll();
+        echo "<table class='table'><thead><tr><th>رقم العملية</th><th>المشرف</th><th>الشوالات</th><th>وقت البدء</th><th>وقت الإنتهاء</th></tr></thead><tbody>";
+        foreach($data as $row) {
+            echo "<tr>
+                <td>{$row['id']}</td>
+                <td>{$row['supervisor']}</td>
+                <td>{$row['total_sacks']}</td>
+                <td>{$row['start_time']}</td>
+                <td>{$row['end_time']}</td>
+            </tr>";
+        }
+        echo "</tbody></table>";
+        break;
+}
+?>

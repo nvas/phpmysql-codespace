@@ -1,0 +1,20 @@
+// File: get_progress.php
+<?php
+include 'config.php';
+
+$operationId = $_GET['id'];
+$operation = $pdo->query("SELECT * FROM operations WHERE id=$operationId")->fetch();
+
+if ($operation['end_time']) {
+    echo json_encode(['progress' => 100]);
+    exit;
+}
+
+$startTime = strtotime($operation['start_time']);
+$currentTime = time();
+$elapsedTime = $currentTime - $startTime;
+$totalTime = $operation['remaining_time'] + $elapsedTime;
+$progress = ($elapsedTime / $totalTime) * 100;
+
+echo json_encode(['progress' => round($progress)]);
+?>

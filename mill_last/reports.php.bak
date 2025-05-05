@@ -1,0 +1,37 @@
+// File: reports.php
+<?php include 'includes/header.php'; ?>
+
+<div class="container mt-4">
+    <h3>التقارير</h3>
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <select id="reportType" class="form-control">
+                <option value="">اختر نوع التقرير</option>
+                <option value="موظفين">تقرير الموظفين</option>
+                <option value="رواتب">تقرير الرواتب</option>
+                <option value="عملاء">تقرير العملاء</option>
+                <option value="عمليات">تقرير العمليات</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <button id="generateReport" class="btn btn-primary">إنشاء التقرير</button>
+        </div>
+    </div>
+
+    <div id="reportContent"></div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#generateReport').on('click', function() {
+        const type = $('#reportType').val();
+        if(!type) return;
+
+        $.get('generate_report.php', {type: type}, function(data) {
+            $('#reportContent').html(data);
+        });
+    });
+});
+</script>
+
+<?php include 'includes/footer.php'; ?>
