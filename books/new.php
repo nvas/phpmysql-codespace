@@ -16,32 +16,33 @@
     </nav>
   </header>
 
-  <nav>
+
+  <main>
     <a href="index.php">Book List</a>
-  </nav>
+    <section>
 
-  <section>
+      <h1>New Book</h1>
+      <form action="new_process.php" method="post">
+        <fieldset>
+          <legend>Book Information</legend>
 
-    <h1>New Book</h1>
-    <form action="new_process.php" method="post">
-      <fieldset>
-        <legend>Book Information</legend>
+          <label for="isbn">ISBN:</label><br />
+          <input type="text" id="isbn" name="isbn" required /><br /><br />
 
-        <label for="isbn">ISBN:</label><br />
-        <input type="text" id="isbn" name="isbn" required /><br /><br />
+          <label for="title">Title:</label><br />
+          <input type="text" id="title" name="title" required /><br /><br />
 
-        <label for="title">Title:</label><br />
-        <input type="text" id="title" name="title" required /><br /><br />
+          <label for="price">Price:</label><br />
+          <input type="number" id="price" name="price" step="0.01" required /><br /><br />
 
-        <label for="price">Price:</label><br />
-        <input type="number" id="price" name="price" step="0.01" required /><br /><br />
-
-        <input type="submit" value="Create Book" />
-      </fieldset>
-    </form>
+          <input type="submit" value="Create Book" />
+        </fieldset>
+      </form>
 
 
-  </section>
+    </section>
+
+  </main>
 </body>
 
 <footer>

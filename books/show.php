@@ -39,6 +39,7 @@ if (is_null($book)) {
 <head>
   <title>Books DBMS: Show Book</title>
   <meta charset="utf-8" />
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -48,7 +49,6 @@ if (is_null($book)) {
     <nav>
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="index.php">Book List</a></li>
       </ul>
     </nav>
   </header>

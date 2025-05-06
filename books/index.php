@@ -62,7 +62,7 @@ if (!$result) {
       <a href="new.php">+ Add New Book</a>
       <h1>Book List</h1>
 
-      <table>
+      <table border="1" cellpadding="5" cellspacing="0">
         <tr>
           <th>ISBN</th>
           <th>Title</th>
