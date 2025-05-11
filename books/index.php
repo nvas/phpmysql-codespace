@@ -88,7 +88,7 @@ if (!$result) {
 
 
 <footer>
-  &copy; 2025 Online Bookstore
+  &copy; 2025 Books Store DBMS
 </footer>
 
 </html>

@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </main>
 
   <footer>
-    &copy; 2025 Books Manager System
+    &copy; 2025 Books Store DBMS
   </footer>
 
 </body>

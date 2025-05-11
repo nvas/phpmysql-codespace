@@ -84,7 +84,7 @@ if (is_null($book)) {
 
 
   <footer>
-    <p>&copy; 2025 Books Manager System</p>
+    &copy; 2025 Books Store DBMS
   </footer>
 
 </body>

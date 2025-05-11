@@ -46,7 +46,7 @@
 </body>
 
 <footer>
-  &copy; 2025 Tasks Manager System
+  &copy; 2025 Books Store DBMS
 </footer>
 
 </html>
