@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Forms for Books Database</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; }
+        h2 { color: #333; }
+        form { background: #fff; padding: 20px; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); max-width: 400px; }
+        label { display: block; margin-top: 10px; }
+        input, select { width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #ccc; border-radius: 4px; }
+        button { margin-top: 15px; padding: 10px 18px; background: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Simple Database Forms</h1>
+
+    <h2>Add Book</h2>
+    <form action="books.php?action=create" method="POST">
+        <label for="isbn">ISBN (13 chars)</label>
+        <input type="text" id="isbn" name="ISBN" maxlength="13" required>
+
+        <label for="title">Title</label>
+        <input type="text" id="title" name="Title" maxlength="100">
+
+        <label for="price">Price</label>
+        <input type="number" id="price" name="Price" step="0.01" min="0" max="9999.99">
+
+        <button type="submit">Add Book</button>
+    </form>
+    <h3>Books List</h3>
+    <table id="booksTable" border="1" cellpadding="6" style="background:#fff;">
+      <thead><tr><th>ID</th><th>ISBN</th><th>Title</th><th>Price</th><th>Actions</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <br>
+
+    <h2>Add Author</h2>
+    <form action="authors.php?action=create" method="POST">
+        <label for="author_name">Name</label>
+        <input type="text" id="author_name" name="Name" maxlength="100">
+        <button type="submit">Add Author</button>
+    </form>
+    <h3>Authors List</h3>
+    <table id="authorsTable" border="1" cellpadding="6" style="background:#fff;">
+      <thead><tr><th>AuthorID</th><th>Name</th><th>Actions</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <br>
+
+    <h2>Add Shipment</h2>
+    <form action="shipments.php?action=create" method="POST">
+        <label for="order_id">Order ID</label>
+        <input type="number" id="order_id" name="OrderID">
+        <label for="address">Address</label>
+        <input type="text" id="address" name="Address" maxlength="200">
+        <label for="status">Status</label>
+        <input type="text" id="status" name="Status" maxlength="20">
+        <button type="submit">Add Shipment</button>
+    </form>
+    <h3>Shipments List</h3>
+    <table id="shipmentsTable" border="1" cellpadding="6" style="background:#fff;">
+      <thead><tr><th>ShipmentID</th><th>OrderID</th><th>Address</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <br>
+
+    <h2>Add Order</h2>
+    <form action="orders.php?action=create" method="POST">
+        <label for="customer_id">Customer ID</label>
+        <input type="number" id="customer_id" name="CustomerID">
+        <label for="book_isbn">Book ISBN</label>
+        <input type="text" id="book_isbn" name="BookISBN" maxlength="13">
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" name="Quantity" min="1">
+        <button type="submit">Add Order</button>
+    </form>
+    <h3>Orders List</h3>
+    <table id="ordersTable" border="1" cellpadding="6" style="background:#fff;">
+      <thead><tr><th>OrderID</th><th>CustomerID</th><th>BookISBN</th><th>Quantity</th><th>Actions</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <br>
+
+<script>
+// Fetch and display Books
+function loadBooks() {
+  fetch('books.php?action=read')
+    .then(r => r.json())
+    .then(data => {
+      let rows = '';
+      data.forEach(book => {
+        rows += `<tr><td>${book.id}</td><td>${book.ISBN}</td><td>${book.Title}</td><td>${book.Price}</td><td>
+          <form action='books.php?action=update' method='POST' style='display:inline;'>
+            <input type='hidden' name='id' value='${book.id}'>
+            <input type='hidden' name='ISBN' value='${book.ISBN}'>
+            <input type='hidden' name='Title' value='${book.Title}'>
+            <input type='hidden' name='Price' value='${book.Price}'>
+            <button type='submit'>Edit</button>
+          </form>
+          <form action='books.php?action=delete' method='POST' style='display:inline;'>
+            <input type='hidden' name='id' value='${book.id}'>
+            <button type='submit' onclick='return confirm("Delete book?")'>Delete</button>
+          </form>
+        </td></tr>`;
+      });
+      document.querySelector('#booksTable tbody').innerHTML = rows;
+    });
+}
+// Authors
+function loadAuthors() {
+  fetch('authors.php?action=read')
+    .then(r => r.json())
+    .then(data => {
+      let rows = '';
+      data.forEach(author => {
+        rows += `<tr><td>${author.AuthorID}</td><td>${author.Name}</td><td>
+          <form action='authors.php?action=update' method='POST' style='display:inline;'>
+            <input type='hidden' name='AuthorID' value='${author.AuthorID}'>
+            <input type='hidden' name='Name' value='${author.Name}'>
+            <button type='submit'>Edit</button>
+          </form>
+          <form action='authors.php?action=delete' method='POST' style='display:inline;'>
+            <input type='hidden' name='AuthorID' value='${author.AuthorID}'>
+            <button type='submit' onclick='return confirm("Delete author?")'>Delete</button>
+          </form>
+        </td></tr>`;
+      });
+      document.querySelector('#authorsTable tbody').innerHTML = rows;
+    });
+}
+// Shipments
+function loadShipments() {
+  fetch('shipments.php?action=read')
+    .then(r => r.json())
+    .then(data => {
+      let rows = '';
+      data.forEach(shipment => {
+        rows += `<tr><td>${shipment.ShipmentID}</td><td>${shipment.OrderID}</td><td>${shipment.Address}</td><td>${shipment.Status}</td><td>
+          <form action='shipments.php?action=update' method='POST' style='display:inline;'>
+            <input type='hidden' name='ShipmentID' value='${shipment.ShipmentID}'>
+            <input type='hidden' name='OrderID' value='${shipment.OrderID}'>
+            <input type='hidden' name='Address' value='${shipment.Address}'>
+            <input type='hidden' name='Status' value='${shipment.Status}'>
+            <button type='submit'>Edit</button>
+          </form>
+          <form action='shipments.php?action=delete' method='POST' style='display:inline;'>
+            <input type='hidden' name='ShipmentID' value='${shipment.ShipmentID}'>
+            <button type='submit' onclick='return confirm("Delete shipment?")'>Delete</button>
+          </form>
+        </td></tr>`;
+      });
+      document.querySelector('#shipmentsTable tbody').innerHTML = rows;
+    });
+}
+// Orders
+function loadOrders() {
+  fetch('orders.php?action=read')
+    .then(r => r.json())
+    .then(data => {
+      let rows = '';
+      data.forEach(order => {
+        rows += `<tr><td>${order.OrderID}</td><td>${order.CustomerID}</td><td>${order.BookISBN}</td><td>${order.Quantity}</td><td>
+          <form action='orders.php?action=update' method='POST' style='display:inline;'>
+            <input type='hidden' name='OrderID' value='${order.OrderID}'>
+            <input type='hidden' name='CustomerID' value='${order.CustomerID}'>
+            <input type='hidden' name='BookISBN' value='${order.BookISBN}'>
+            <input type='hidden' name='Quantity' value='${order.Quantity}'>
+            <button type='submit'>Edit</button>
+          </form>
+          <form action='orders.php?action=delete' method='POST' style='display:inline;'>
+            <input type='hidden' name='OrderID' value='${order.OrderID}'>
+            <button type='submit' onclick='return confirm("Delete order?")'>Delete</button>
+          </form>
+        </td></tr>`;
+      });
+      document.querySelector('#ordersTable tbody').innerHTML = rows;
+    });
+}
+window.onload = function() {
+  loadBooks();
+  loadAuthors();
+  loadShipments();
+  loadOrders();
+};
+</script>
+</body>
+</html>

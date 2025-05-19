@@ -15,10 +15,10 @@
         <li><a href="/">Home</a></li>
         <!-- <li><a href="tasks/">Table Tasks</a></li> -->
         <li><a href="books/">Books</a></li>
-        <li><a href="#">Authors</a></li>
-        <li><a href="#">Customers</a></li>
-        <li><a href="#">Orders</a></li>
-        <li><a href="#">Shipments</a></li>
+        <li><a href="authors/">Authors</a></li>
+        <li><a href="customers/">Customers</a></li>
+        <li><a href="orders/">Orders</a></li>
+        <li><a href="shipments/">Shipments</a></li>
       </ul>
     </nav>
   </header>
