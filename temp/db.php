@@ -1,10 +1,11 @@
 <?php
 // db.php: Database connection
-$host = 'localhost';
+$host = '127.0.0.1';
 $db   = 'Books';
-$user = 'root'; // Change if needed
-$pass = '';
+$user = 'mariadb'; // Change if needed
+$pass = 'mariadb';
 $charset = 'utf8mb4';
+
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
